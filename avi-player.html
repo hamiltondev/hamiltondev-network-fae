@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HamiltonDev Network - Fae</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/avi-player.css">
+  </head>
+  <body>
+    <h1>HamiltonDev Network</h1>
+
+    <section>
+      <h2>Upload your AVI-media file:</h2>
+
+      <form>
+        <input type="file" name="media" id="upload" accept="video/*">
+      </form>
+    </section>
+
+    <section class="hidden">
+      <h2>Play your AVI-media file:</h2>
+
+      <video width="800" controls>
+        <source src=".mp4" id="media">
+          Your browser does not support HTML5 video.
+      </video>
+    </section>
+
+    <script type="text/javascript" src="scripts/jquery.min.js"></script>
+
+    <script type="text/javascript">
+      $("#upload").change(function () {
+        console.log(this.files[0]);
+
+        var $source = $("#media");
+
+        $source[0].src = URL.createObjectURL(this.files[0]);
+        $source.parent()[0].load();
+
+        $(".hidden").show();
+      });
+    </script>
+  </body>
+</html>
